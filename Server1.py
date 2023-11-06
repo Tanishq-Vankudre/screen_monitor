@@ -24,3 +24,24 @@ server_thread.start()
 
 # Function to receive and display video frames
 def receive_and_display():
+    while True:
+        try:
+            client, addr = server.accept_client()
+            label = tk.Label(frame, text=f"Client {addr[0]}")
+            label.pack()
+            client_video = client.start_stream()
+            client_label = tk.Label(frame)
+            client_label.pack()
+            while True:
+                frame = client_video.read()
+                client_label.img = tk.PhotoImage(data=frame)
+                client_label.config(image=client_label.img)
+                window.update()
+        except ConnectionError:
+            continue
+
+# Start receiving and displaying video frames in a separate thread
+receive_thread = threading.Thread(target=receive_and_display)
+receive_thread.start()
+
+window.mainloop()
