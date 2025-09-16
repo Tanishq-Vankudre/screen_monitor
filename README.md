@@ -87,6 +87,6 @@ python sender.py
 - **Anish Ajit Jarag** - [GitHub](https://github.com/anish-jarag)
 - **Tanishq Vishal Vankudre** - [GitHub](https://github.com/Tanishq-Vankudre)
 
-## �📄 License
+## 📄 License
 
 This project is open source and available under the MIT License.
